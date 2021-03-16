@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchForm from './SearchForm';
 import Loading from './Loading';
+import './LinkedInSearchApp.css';
 
 import axios from 'axios';
 
@@ -26,9 +27,8 @@ function LinkedInSearchApp() {
 	);
 
 	return (
-		<div>
+		<div className="LinkedInSearchApp">
 			<SearchForm setSearchQuery={setSearchQuery} />
-			<h1>You searched for {searchQuery}</h1>
 			{loading ? <Loading /> : <img src={`data:image/png;base64, ${image}`} alt="" />}
 		</div>
 	);

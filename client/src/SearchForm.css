@@ -1,0 +1,28 @@
+.SearchForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.SearchForm form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.SearchForm-input {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    width: 100%;
+    margin: 1rem 2rem;
+}
+
+.SearchForm button {
+    width: 80%;
+}
+
+.SearchForm-warning {
+    font-weight: 400;
+    color: red;
+}
