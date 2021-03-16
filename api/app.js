@@ -26,24 +26,23 @@ app.use(corse());
 // 	await browser.close();
 // })();
 
-async function getStuff() {
+async function getStuff(query) {
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
-	await page.goto('https://www.google.com/search?q=https://www.linkedin.com/in/karellahmy/');
+	// await page.goto('https://www.google.com/search?q=https://www.linkedin.com/in/karellahmy/');
+	await page.goto(`https://www.google.com/search?q=${query}`);
 	const hrefElement = await page.$('.g');
 	const screenshot = await hrefElement.screenshot({
 		encoding: 'base64'
 	});
-
-	console.log(screenshot);
 	await browser.close();
 	return screenshot;
 }
 
-app.get('/search', async (req, res) => {
-	console.log('got to the api');
-	const ss = await getStuff();
-	img = Buffer.from(ss, 'base64');
+app.post('/search', async (req, res) => {
+	const { query } = req.body;
+	// console.log('got to the api');
+	const ss = await getStuff(query);
 	res.send(ss);
 });
 

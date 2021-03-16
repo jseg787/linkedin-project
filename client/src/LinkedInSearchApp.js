@@ -10,7 +10,9 @@ function LinkedInSearchApp() {
 	useEffect(
 		() => {
 			(async function getData() {
-				const { data } = await axios.get('http://localhost:8000/search', {});
+				const { data } = await axios.post('http://localhost:8000/search', {
+					query: searchQuery
+				});
 				// setImage(data)
 				console.log(data);
 				// const img = data.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
