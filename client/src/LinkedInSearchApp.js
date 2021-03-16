@@ -6,18 +6,14 @@ import axios from 'axios';
 function LinkedInSearchApp() {
 	const [ searchQuery, setSearchQuery ] = useState('');
 	const [ image, setImage ] = useState('');
+	// const [ loading, setLoading ] = useState(true);
 
 	useEffect(
 		() => {
-			(async function getData() {
+			(async function() {
 				const { data } = await axios.post('http://localhost:8000/search', {
 					query: searchQuery
 				});
-				// setImage(data)
-				console.log(data);
-				// const img = data.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
-				// console.log(img);
-				// var decodedData = atob(data);
 				setImage(data);
 			})();
 		},
@@ -28,14 +24,8 @@ function LinkedInSearchApp() {
 		<div>
 			<SearchForm setSearchQuery={setSearchQuery} />
 			<h1>You searched for {searchQuery}</h1>
-			{/* <h2>{image}</h2> */}
-			<img src={`data:image/png;base64, ${image}`} alt="This is not working" />
-			{/* <img
-				src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
-AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
-    9TXL0Y4OHwAAAABJRU5ErkJggg=="
-				alt="Red dot"
-			/> */}
+			{/* {loading ? <h2>Loading</h2> : <img src={`data:image/png;base64, ${image}`} alt="" />} */}
+			<img src={`data:image/png;base64, ${image}`} alt="" />
 		</div>
 	);
 }

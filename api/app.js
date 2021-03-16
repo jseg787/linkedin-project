@@ -1,12 +1,12 @@
 const puppeteer = require('puppeteer');
 const express = require('express');
-const corse = require('cors');
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(corse());
+app.use(cors());
 
 async function getStuff(query) {
 	const browser = await puppeteer.launch();

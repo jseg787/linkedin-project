@@ -4,18 +4,19 @@ function SearchForm({ setSearchQuery }) {
 	const [ value, setValue ] = useState('');
 
 	const checkValue = (e) => {
-		setValue(e.target.value);
+		e.preventDefault();
+		if (value.match(/^https:\/\/\www\.linkedin\.com\/.*$/)) {
+			console.log('valid');
+			setSearchQuery(value);
+		} else {
+			setSearchQuery('');
+		}
 	};
 
 	return (
 		<div>
-			<form
-				onSubmit={(e) => {
-					e.preventDefault();
-					setSearchQuery(value);
-				}}
-			>
-				<input value={value} onChange={checkValue} />
+			<form onSubmit={checkValue}>
+				<input value={value} onChange={(e) => setValue(e.target.value)} />
 				<button>Submit</button>
 			</form>
 		</div>
