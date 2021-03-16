@@ -6,7 +6,6 @@ function SearchForm({ setSearchQuery }) {
 	const checkValue = (e) => {
 		e.preventDefault();
 		if (value.match(/^https:\/\/\www\.linkedin\.com\/.*$/)) {
-			console.log('valid');
 			setSearchQuery(value);
 		} else {
 			setSearchQuery('');
