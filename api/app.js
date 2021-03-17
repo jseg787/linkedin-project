@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-async function getStuff(query) {
+async function getData(query) {
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 	await page.goto(`https://www.google.com/search?q=${query}`);
@@ -22,7 +22,7 @@ async function getStuff(query) {
 
 app.post('/search', async (req, res) => {
 	const { query } = req.body;
-	const ss = await getStuff(query);
+	const ss = await getData(query);
 	res.send(ss);
 });
 
